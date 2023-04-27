@@ -1,0 +1,12 @@
+<div class="container">
+
+  <div class="item">
+    <label for="username">Username</label>
+    <input type="text" [(ngModel)]="username">
+  </div>
+  <div class="item">
+    <label for="status">Active</label>
+    <input type="checkbox" [(ngModel)]="status">
+  </div>
+  <button (click)="onLoggaUser()">Login</button>
+</div>

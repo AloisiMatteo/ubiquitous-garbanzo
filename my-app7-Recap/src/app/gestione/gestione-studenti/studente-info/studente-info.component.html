@@ -1,0 +1,39 @@
+<h3>Info singolo studente</h3>
+<p>digita una matricola per conoscere il dettaglio dello studente</p>
+<input type="number" [(ngModel)]="matricola">
+<button type="button" (click)="onStampaInfo()">Info</button>
+
+<br>
+<div *ngIf="singoloStudente">
+  {{singoloStudente.matricola}} - {{singoloStudente.nome}} {{singoloStudente.cognome}}
+  <ul>
+    <li *ngFor="let corso of singoloStudente.cdCorsi"> {{corso}} </li>
+  </ul>
+</div>
+
+<!-- Crea un componente per un finto login (username,status) -->
+
+<!-- Ho una lista active-users ed una lista unactive-users -->
+<!-- Vendono rempite in base al login -->
+
+<!-- Crea un pulsante per stampare gli utenti active e quelli inactive
+      quando li stampo ognuno avrà un pulsante per cambiare il suo stato
+      e quindi passare nell'altra lista, conta anche quante volte un utente cambia stato -->
+
+<hr>
+<!--
+  Informazioni utili:
+      LoginForm manda lo user dal form in output, di cui StudenteInfo lo prende
+      StudenteInfo spacchetta la lista di utenti presa prima da LoginForm e la manda ad UserList
+      UserList gestisce il singolo modello di LoggedUser spacchettato prima da StudenteInfo
+-->
+
+<app-login-form (onLoggaStudente)="onPrendiStudente($event)"></app-login-form>
+<div class="flex-container">
+<div class="lista-utenti-loggati" *ngFor="let utente of utentiLoggati; let i = index">
+
+  <app-users-list [utente]="utente" [indice]="i"></app-users-list>
+
+</div>
+</div>
+
